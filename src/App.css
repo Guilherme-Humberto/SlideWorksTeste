@@ -7,6 +7,13 @@
   justify-content: center;
   height: 100vh;
 }
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+}
 .wrapperOne {
   display: flex;
   flex-direction: column;
@@ -100,7 +107,7 @@
 }
 
 @media (max-width: 1000px) {
-  .App {
+  .form {
     flex-direction: column;
   }
   .wrapperTwo {

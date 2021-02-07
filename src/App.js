@@ -4,7 +4,6 @@ import secret from './secrets/index.json'
 
 import "./App.css";
 
-
 function App() {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
@@ -12,17 +11,24 @@ function App() {
   const [idList, setIdList] = useState("");
   const [top, setTop] = useState(false);
   const [bottom, setBottom] = useState(false);
-  const [clear, setClear] = useState(false);
 
-  const handleCreateNewCard = () => {
+  const handleCreateNewCard = (e) => {
+    e.preventDefault();
     api
       .post(`cards?key=${secret.key}&token=${secret.token}&idList=${idList}`, {
         name,
         desc,
         pos,
       })
-      .then(() => setClear(true))
-      .catch(err => console.log(err));
+      .then(() => {
+        setName("")
+        setDesc("")
+        setPos("")
+        setIdList("")
+        setTop(false)
+        setBottom(false)
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleCheckedTop = (value) => {
@@ -39,19 +45,22 @@ function App() {
 
   return (
     <div className="App">
-      <div className="wrapperOne">
+      <form className="form" onSubmit={handleCreateNewCard}>
+        <div className="wrapperOne">
         <label className="label">Nome</label>
         <input
           className="input"
+          required
           onChange={(e) => setName(e.target.value)}
           type="text"
-          value={clear ? "" : name}
+          value={name}
           placeholder="Name"
         />
         <label className="label">Descrição</label>
         <textarea
           className="textarea"
-          value={clear ? "" : desc}
+          required
+          value={desc}
           onChange={(e) => setDesc(e.target.value)}
           placeholder="Type Something"
         ></textarea>
@@ -63,7 +72,8 @@ function App() {
             <input
               className="inputcheck"
               value={"top"}
-              checked={clear ? false : top}
+              required={!pos && true}
+              checked={top}
               onChange={(e) => handleCheckedTop(e.target.value)}
               type="checkbox"
             />
@@ -73,7 +83,8 @@ function App() {
             <input
               className="inputcheck"
               value={"bottom"}
-              checked={clear ? false : bottom}
+              required={!pos && true}
+              checked={bottom}
               onChange={(e) => handleCheckedBottom(e.target.value)}
               type="checkbox"
             />
@@ -85,7 +96,8 @@ function App() {
           <label className="label">Escolher lista</label>
           <select
             className="selectedList"
-            value={clear ? "" : idList}
+            required
+            value={idList}
             onChange={(e) => setIdList(e.target.value)}
           >
             <option className="options" value="" disabled>
@@ -101,11 +113,12 @@ function App() {
               Lista 3
             </option>
           </select>
-          <button onClick={handleCreateNewCard} className="button">
+          <button type="submit" className="button">
             Enviar
           </button>
         </div>
       </div>
+      </form>
     </div>
   );
 }
