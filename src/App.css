@@ -1,0 +1,109 @@
+.App {
+  display: flex;
+  gap: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.wrapperOne {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: min(500px, 100%);
+}
+.wrapperTwo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: min(500px, 100%);
+}
+.label {
+  font-weight: bold;
+  color: lightseagreen;
+}
+.input {
+  padding: 10px;
+  background: rgb(238, 245, 248);
+  border-radius: 10px;
+  border: solid 2px lightblue;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none;
+}
+.textarea {
+  background: transparent;
+  border-radius: 10px;
+  border: solid 2px lightblue;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  resize: none;
+  padding: 10px;
+  height: 250px;
+}
+.inputcheck {
+  width: 20px;
+  height: 20px;
+  border: solid 2px lightseagreen;
+  margin: 0 5px;
+}
+.labelcheck {
+  color: lightseagreen;
+  font-size: 15px;
+  color: lightseagreen;
+  font-weight: bold;
+}
+.checkBox {
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
+
+  width: 100%;
+}
+.wrappercheck {
+  display: flex;
+  align-items: center;
+}
+.selectedList {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px 0;
+  color: lightseagreen;
+  font-weight: bold;
+  border-radius: 10px;
+  border: solid 2px lightseagreen;
+  background: rgb(238, 245, 248);
+  outline: none;
+  margin-top: 10px;
+}
+.selectedwrapper {
+  display: flex;
+  flex-direction: column;
+}
+.options {
+  font-size: 16px;
+  font-weight: bold;
+}
+.button {
+  width: 150px;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  background: rgb(81, 81, 204);
+  margin-top: 20px;
+}
+
+@media (max-width: 1000px) {
+  .App {
+    flex-direction: column;
+  }
+  .wrapperTwo {
+    max-width: 500px;
+  }
+}
